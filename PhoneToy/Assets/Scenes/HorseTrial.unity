@@ -307,7 +307,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: decc5167c0249e44fa0151e584bebf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horseSounds: []
+  screenWidthInUnits: 16
+  screenHeightInUnits: 16
+  minX: 6
+  maxX: 10
+  maxY: 10
+  minY: 6
+  horseSounds:
+  - {fileID: 8300000, guid: a8051e7524c4302408f5fa1779be8b7f, type: 3}
+  - {fileID: 8300000, guid: c798fcba4b4032a47b6cb8d0a1354579, type: 3}
+  - {fileID: 8300000, guid: 5d9c592c4851e2a4eae3bf961d5c6a5c, type: 3}
+  - {fileID: 8300000, guid: af029b420e8b63944be9eca2af12fc99, type: 3}
+  - {fileID: 8300000, guid: f295a84a50738c44e83ec565c20ac44c, type: 3}
 --- !u!82 &792034622442783313
 AudioSource:
   m_ObjectHideFlags: 0
@@ -318,8 +329,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 5d9c592c4851e2a4eae3bf961d5c6a5c, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -25,7 +25,7 @@ public class HorseButtonBehaviors : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (horseClicked == false)
+        if (Input.GetMouseButtonDown(0))
         {
             HorsePressed();
         }
@@ -38,10 +38,11 @@ public class HorseButtonBehaviors : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             horseClicked = true;
-            //AudioClip clip = horseSounds[UnityEngine.Random.Range(0, horseSounds.Length)];
-            //myAudioSource.PlayOneShot(clip).timings;
+            AudioClip clip = horseSounds[UnityEngine.Random.Range(0, horseSounds.Length)];
+            myAudioSource.PlayOneShot(clip);
 
         }
 
     }
+
 }
