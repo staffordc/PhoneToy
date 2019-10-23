@@ -4,7 +4,6 @@ using System.Collections;
 
 public class PlayButtonBehaviors : MonoBehaviour
 {
-    bool playButtonPressed = false;
     AudioSource myAudioSource;
     IEnumerator randomPlay = null;
     [SerializeField] AudioClip[] playSounds;
@@ -12,15 +11,7 @@ public class PlayButtonBehaviors : MonoBehaviour
     {
         myAudioSource = GetComponent<AudioSource>();
     }
-    //void Update()
-    // {
-    //     if (Input.GetMouseButtonDown(0))
-    //     {
-    //         if (playButtonPressed == false)
-    //         
-    //     }
 
-    // }
     public void NotUpdate()
     {
         randomPlay = DoRandomPlay();
@@ -48,7 +39,6 @@ public class PlayButtonBehaviors : MonoBehaviour
         }
 
         randomPlay = null;
-        playButtonPressed = false;
 
     }
 }
