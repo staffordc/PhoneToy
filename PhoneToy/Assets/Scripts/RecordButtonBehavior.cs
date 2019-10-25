@@ -6,6 +6,7 @@ using System.Linq;
 
 public class RecordButtonBehavior : MonoBehaviour
 {
+    IEnumerator ListenWell = null;
     void Start()
     {
 
@@ -13,9 +14,14 @@ public class RecordButtonBehavior : MonoBehaviour
     public List<float> SoundList_ener = new List<float>();
     public void Recording()
     {
-        StartCoroutine(ListenWell());
+        if (ListenWell == null)
+        {
+            ListenWell = ListenVeryGood();
+            StartCoroutine(ListenWell);
+        }
+
     }
-    IEnumerator ListenWell()
+    IEnumerator ListenVeryGood()
     {
         FindObjectOfType<PlayButtonBehaviors>().Disable();
         var loops = 0;
@@ -41,6 +47,7 @@ public class RecordButtonBehavior : MonoBehaviour
             yield return null;
         }
 
+        ListenWell = null;
         FindObjectOfType<PlayButtonBehaviors>().Enable(SoundList_ener);
     }
 }

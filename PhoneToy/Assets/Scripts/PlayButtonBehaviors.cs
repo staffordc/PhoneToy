@@ -24,15 +24,24 @@ public class PlayButtonBehaviors : MonoBehaviour
     }
     public void FirstPlay()
     {
-        var doTimePlay = DoTimePlay();
-        StartCoroutine(doTimePlay);
-        //randomPlay = DoRandomPlay();
-        //StartCoroutine(randomPlay);
+        if (myRecordTimes == null)
+        {
+            Debug.Log("Nothing in Recording");
+            randomPlay = DoRandomPlay();
+            StartCoroutine(randomPlay);
+        }
+        else
+        {
+            Debug.Log("There's something in recording");
+            var doTimePlay = DoTimePlay();
+            StartCoroutine(doTimePlay);
+        }
+
     }
     IEnumerator DoTimePlay()
     {
+        Debug.Log("I'm doing time play");
         var timeElapsede = 0f;
-
         timeElapsede += Time.deltaTime;
         foreach (var r in myRecordTimes)
         {
@@ -40,6 +49,7 @@ public class PlayButtonBehaviors : MonoBehaviour
             {
                 timeElapsede += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
+                Debug.Log(r);
             }
             AudioClip clip = playSounds[UnityEngine.Random.Range(0, playSounds.Length)];
             myAudioSource.PlayOneShot(clip);
