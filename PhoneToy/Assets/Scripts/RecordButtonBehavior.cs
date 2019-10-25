@@ -8,18 +8,20 @@ public class RecordButtonBehavior : MonoBehaviour
 {
     void Start()
     {
-    }
 
+    }
+    public List<float> SoundList_ener = new List<float>();
     public void Recording()
     {
-        var recordMe = ListenWell();
-        StartCoroutine(recordMe);
+        StartCoroutine(ListenWell());
     }
     IEnumerator ListenWell()
     {
+        FindObjectOfType<PlayButtonBehaviors>().Disable();
         var loops = 0;
         var timeElapsed = 0f;
-        List<float> SoundList_ener = new List<float>();
+        SoundList_ener = new List<float>();
+
         while (timeElapsed <= 5f)
         {
             timeElapsed += Time.deltaTime;
@@ -32,15 +34,13 @@ public class RecordButtonBehavior : MonoBehaviour
                 SoundList_ener.Add(timeElapsed);
                 //Debug.Log(SLener)
                 Debug.Log("List contents");
-                Debug.Log(SoundList_ener.Count);
+                Debug.Log(string.Join(", ", SoundList_ener));
                 //SoundList_ener.ForEach(t => Debug.Log(t));
                 //How does the play button access this???
             }
-            yield return new WaitForEndOfFrame();
-
-
-            yield return SoundList_ener;
+            yield return null;
         }
 
+        FindObjectOfType<PlayButtonBehaviors>().Enable(SoundList_ener);
     }
 }

@@ -1,21 +1,51 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayButtonBehaviors : MonoBehaviour
 {
     AudioSource myAudioSource;
     IEnumerator randomPlay = null;
     [SerializeField] AudioClip[] playSounds;
+    List<float> myRecordTimes;
     void Start()
     {
         myAudioSource = GetComponent<AudioSource>();
     }
-
-    public void NotUpdate()
+    public void Enable(List<float> recordTimes)
     {
-        randomPlay = DoRandomPlay();
-        StartCoroutine(randomPlay);
+        GetComponent<Button>().enabled = true;
+        myRecordTimes = recordTimes;
+    }
+    public void Disable()
+    {
+        GetComponent<Button>().enabled = false;
+    }
+    public void FirstPlay()
+    {
+        var doTimePlay = DoTimePlay();
+        StartCoroutine(doTimePlay);
+        //randomPlay = DoRandomPlay();
+        //StartCoroutine(randomPlay);
+    }
+    IEnumerator DoTimePlay()
+    {
+        var timeElapsede = 0f;
+
+        timeElapsede += Time.deltaTime;
+        foreach (var r in myRecordTimes)
+        {
+            while (r > timeElapsede)
+            {
+                timeElapsede += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            AudioClip clip = playSounds[UnityEngine.Random.Range(0, playSounds.Length)];
+            myAudioSource.PlayOneShot(clip);
+            Debug.Log(r);
+        }
+        yield return null;
     }
     IEnumerator DoRandomPlay()
     {
