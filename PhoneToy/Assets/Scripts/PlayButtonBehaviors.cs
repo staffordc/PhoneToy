@@ -42,11 +42,13 @@ public class PlayButtonBehaviors : MonoBehaviour
     {
         Debug.Log("I'm doing time play");
         var timeElapsede = 0f;
+
         timeElapsede += Time.deltaTime;
         foreach (var r in myRecordTimes)
         {
             while (r > timeElapsede)
             {
+                GameObject.Find("BarOfProgress").GetComponent<RectTransform>().localScale = new Vector3(timeElapsede / 5f, 1f, 1f);
                 timeElapsede += Time.deltaTime;
                 yield return new WaitForEndOfFrame();
                 Debug.Log(r);
@@ -66,6 +68,7 @@ public class PlayButtonBehaviors : MonoBehaviour
         while (timeElapsed <= 5f)
         {
             timeElapsed += Time.deltaTime;
+            GameObject.Find("BarOfProgress").GetComponent<RectTransform>().localScale = new Vector3(timeElapsed / 5f, 1f, 1f);
             if (timeElapsed > loopRan)
             {
                 AudioClip clip = playSounds[UnityEngine.Random.Range(0, playSounds.Length)];
