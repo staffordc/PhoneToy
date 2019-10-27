@@ -45,6 +45,7 @@ public class HorseButtonBehaviors : MonoBehaviour
                 //How does the play button access this???
             }
             yield return null;
+            GameObject.Find("BarOfProgress").GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
         }
 
         FindObjectOfType<RecordButtonBehavior>().ListenWell = null;

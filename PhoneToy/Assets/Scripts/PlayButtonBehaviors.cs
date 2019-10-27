@@ -48,8 +48,8 @@ public class PlayButtonBehaviors : MonoBehaviour
         {
             while (r > timeElapsede)
             {
-                GameObject.Find("BarOfProgress").GetComponent<RectTransform>().localScale = new Vector3(timeElapsede / 5f, 1f, 1f);
                 timeElapsede += Time.deltaTime;
+                GameObject.Find("BarOfProgress").GetComponent<RectTransform>().localScale = new Vector3(timeElapsede / 5f, 1f, 1f);
                 yield return new WaitForEndOfFrame();
                 Debug.Log(r);
             }
@@ -58,6 +58,7 @@ public class PlayButtonBehaviors : MonoBehaviour
             Debug.Log(r);
         }
         yield return null;
+        GameObject.Find("BarOfProgress").GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
     }
     IEnumerator DoRandomPlay()
     {
@@ -80,7 +81,7 @@ public class PlayButtonBehaviors : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-
+        GameObject.Find("BarOfProgress").GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
         randomPlay = null;
 
     }
