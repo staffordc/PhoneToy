@@ -26,13 +26,11 @@ public class PlayButtonBehaviors : MonoBehaviour
     {
         if (myRecordTimes == null)
         {
-            Debug.Log("Nothing in Recording");
             randomPlay = DoRandomPlay();
             StartCoroutine(randomPlay);
         }
         else
         {
-            Debug.Log("There's something in recording");
             var doTimePlay = DoTimePlay();
             StartCoroutine(doTimePlay);
         }
@@ -40,7 +38,6 @@ public class PlayButtonBehaviors : MonoBehaviour
     }
     IEnumerator DoTimePlay()
     {
-        Debug.Log("I'm doing time play");
         var timeElapsede = 0f;
 
         timeElapsede += Time.deltaTime;
@@ -76,7 +73,6 @@ public class PlayButtonBehaviors : MonoBehaviour
                 myAudioSource.PlayOneShot(clip);
                 randomFrameHit = UnityEngine.Random.Range(0f, 1.5f);
                 loopRan += randomFrameHit;
-                Debug.Log("active thing you're watching " + loopRan);
             }
 
             yield return new WaitForEndOfFrame();

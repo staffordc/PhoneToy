@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/HorseTrial.unity
     guid: 41d94cde385a97f47ab830652d902b96
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HorseTrialmobile.unity
     guid: 101f654175e440a4988d732fa2390fe8
   m_configObjects: {}
